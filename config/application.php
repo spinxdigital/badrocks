@@ -81,3 +81,13 @@ define('DISALLOW_FILE_EDIT', true);
 if (!defined('ABSPATH')) {
     define('ABSPATH', $webroot_dir . '/wp/');
 }
+
+/**
+ * AWS S3 Settings
+ */
+define( 'S3_UPLOADS_BUCKET', env('S3_UPLOADS_BUCKET') );
+define( 'S3_UPLOADS_KEY', env('S3_UPLOADS_KEY') );
+define( 'S3_UPLOADS_SECRET', env('S3_UPLOADS_SECRET') );
+define( 'S3_UPLOADS_REGION', env('S3_UPLOADS_REGION') );
+define( 'S3_UPLOADS_BUCKET_URL', env('S3_UPLOADS_BUCKET_URL') );
+define( 'S3_UPLOADS_DISABLE_REPLACE_UPLOAD_URL', env('S3_UPLOADS_DISABLE_REPLACE_UPLOAD_URL') );

@@ -7,8 +7,7 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: circleci/node
-      - image: composer
+      - image: circleci/node:chakracore-10-browsers
 
     working_directory: ~/repo
 

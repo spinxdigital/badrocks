@@ -20,10 +20,10 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      # - run: composer install -n --prefer-dist
+      - run: composer install -n --prefer-dist
         
       # run composer for theme
-      - run: cd web/app/themes/ && ls -al
+      - run: cd web/app/themes/spinx && composer install -n --prefer-dist
 
       # node cache
-      - run: cd web/app/themes/ && yarn build:production
+      - run: cd web/app/themes/spinx && yarn build:production

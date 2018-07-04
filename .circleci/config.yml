@@ -21,9 +21,9 @@ jobs:
       #- run: cd web/app/themes/spinx && yarn build:production
 
       #artifacts
-      - run: mkdir /tmp
-      - run: 7z a -tzip badrock.$CIRCLE_BUILD_NUM.zip ./site/*
-      - run: zip -r /tmp/artifacts/art.zip .
+      - run: mkdir /tmp/artifacts
+      - run: 7z a -tzip /tmp/badrock.$CIRCLE_BUILD_NUM.zip .
+      #- run: zip -r /tmp/artifacts/art.zip .
 
       - store_artifacts:
-          path: /tmp
+          path: /tmp/artifacts

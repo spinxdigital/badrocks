@@ -38,4 +38,6 @@ jobs:
       - run: composer update
       - run: cd web/app/themes/
       - run: composer update
+      - run: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+      - run: sudo apt-get update && sudo apt-get install yarn
       - run: yarn build:production

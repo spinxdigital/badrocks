@@ -22,16 +22,16 @@ jobs:
       - restore_cache:
           keys:
             # when lock file changes, use increasingly general patterns to restore cache
-            - yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
-            - yarn-packages-v1-{{ .Branch }}-
-            - yarn-packages-v1-
+            - node-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/package-lock.json" }}
+            - node-v1-{{ .Branch }}-
+            - node-v1-
 
-      - run: cd web/app/themes/spinx && yarn
+      - run: cd web/app/themes/spinx && npm install
 
       - save_cache:
           paths:
-            - ~/.cache/yarn
-          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
+            - ~/usr/local/lib/node_modules  # location depends on npm version
+          key: node-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/package-lock.json" }}
 
       - run: cd web/app/themes/spinx && yarn build:production
 

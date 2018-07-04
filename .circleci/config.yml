@@ -7,13 +7,16 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: circleci/node:chakracore-10-browsers
+      - image: circleci/php:7.1-jessie-node-browsers
 
     working_directory: ~/repo
 
     steps:
       - checkout
 
+      # Download and cache dependencies
+      - run: composer install -n --prefer-dist
+        
       # run composer for theme
       - run: cd web/app/themes/spinx && composer install -n --prefer-dist
 

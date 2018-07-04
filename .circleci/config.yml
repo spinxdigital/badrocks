@@ -7,13 +7,23 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: composer
+      - image: circleci/node
 
     working_directory: ~/repo
 
     steps:
       - checkout
 
-      # Download and cache dependencies
-      - run: composer install -n --prefer-dist
+      # run composer for theme
       - run: cd web/app/themes/spinx && composer install -n --prefer-dist
+
+      # node cache
+      - run: cd web/app/themes/spinx && npm install webpack --save-dev
+      - run: cd web/app/themes/spinx && yarn build:production
+
+      #artifacts
+      - run: mkdir /tmp/artifacts
+      - run: zip -r /tmp/artifacts/art.zip .
+
+      - store_artifacts:
+          path: /tmp/artifacts

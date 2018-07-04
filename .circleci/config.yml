@@ -23,8 +23,7 @@ jobs:
       - run: composer install -n --prefer-dist
         
       # run composer for theme
-      - run: cd web/app/themes/
-      - run: composer install -n --prefer-dist
+      - run: cd web/app/themes/ && composer install -n --prefer-dist
 
       # node cache
-      - run: yarn install
+      - run: cd web/app/themes/ && yarn build:production

@@ -18,7 +18,21 @@ jobs:
 
       # node cache
       #- run: cd web/app/themes/spinx && npm install webpack --save-dev
+
+      - restore_cache:
+        keys:
+          # when lock file changes, use increasingly general patterns to restore cache
+          - yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
+          - yarn-packages-v1-{{ .Branch }}-
+          - yarn-packages-v1-
+
       - run: cd web/app/themes/spinx && yarn
+
+      - save_cache:
+        paths:
+          - ~/.cache/yarn
+        key: yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
+
       - run: cd web/app/themes/spinx && yarn build:production
 
       #artifacts

@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: marphy/uc-php7-node-composer:latest
+      - image: circleci/php:7.1-jessie-node-browsers
 
     working_directory: ~/repo
 

@@ -7,12 +7,7 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: circleci/php:7.1-jessie-node-browsers
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mysql:9.4
+      - image: composer/composer:php5-alpine
 
     working_directory: ~/repo
 
@@ -21,17 +16,3 @@ jobs:
 
       # Download and cache dependencies
       - run: composer install -n --prefer-dist
-        
-      # run composer for theme
-      - run: cd web/app/themes/spinx && composer install -n --prefer-dist
-
-      # node cache
-      - run: cd web/app/themes/spinx && npm install webpack --save-dev
-      - run: cd web/app/themes/spinx && yarn build:production
-
-      #artifacts
-      - run: mkdir /tmp/artifacts
-      - run: zip -r /tmp/artifacts/art.zip .
-
-      - store_artifacts:
-          path: /tmp/artifacts

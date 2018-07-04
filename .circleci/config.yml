@@ -16,29 +16,14 @@ jobs:
       # run composer for theme
       - run: cd web/app/themes/spinx && composer install -n --prefer-dist
 
-      # node cache
-      # - run: cd web/app/themes/spinx && npm install webpack --save-dev
-
-      - restore_cache:
-          keys:
-            - yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
-            - yarn-packages-v1-{{ .Branch }}-
-            - yarn-packages-v1-
-
       - run: cd web/app/themes/spinx && yarn
-
-      - save_cache:
-          paths:
-            - ~/.cache/yarn
-          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
-
       - run: cd web/app/themes/spinx && yarn build:production
 
       #artifacts
       - run: mkdir /tmp/artifacts
       #- run: sudo apt-get install p7zip-full
       #- run: 7z a -tzip /tmp/badrock.$CIRCLE_BUILD_NUM.zip .
-      - run: zip -r /tmp/artifacts/art.zip .
+      - run: zip -r /tmp/badrock.$CIRCLE_BUILD_NUM.zip .
 
       - store_artifacts:
           path: /tmp/artifacts

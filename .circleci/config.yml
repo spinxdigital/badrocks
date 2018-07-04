@@ -11,18 +11,19 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      - run: composer install -n --prefer-dist
+      #- run: composer install -n --prefer-dist
         
       # run composer for theme
-      - run: cd web/app/themes/spinx && composer install -n --prefer-dist
+      #- run: cd web/app/themes/spinx && composer install -n --prefer-dist
 
       # node cache
-      - run: cd web/app/themes/spinx && npm install webpack --save-dev
-      - run: cd web/app/themes/spinx && yarn build:production
+      #- run: cd web/app/themes/spinx && npm install webpack --save-dev
+      #- run: cd web/app/themes/spinx && yarn build:production
 
       #artifacts
-      - run: mkdir /tmp/artifacts
+      - run: mkdir /tmp
+      - run: 7z a -tzip badrock.$CIRCLE_BUILD_NUM.zip ./site/*
       - run: zip -r /tmp/artifacts/art.zip .
 
       - store_artifacts:
-          path: /tmp/artifacts
+          path: /tmp

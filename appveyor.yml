@@ -5,22 +5,6 @@ clone_folder: c:\projects\AkamaiOPEN-edgegrid-php-client
 
 environment:
   matrix:
-  - PHP_VERSION: 5.6
-    DEPS: lock
-  - PHP_VERSION: 5.6
-    DEPS: low
-  - PHP_VERSION: 5.6
-    DEPS: high
-  - PHP_VERSION: 7.0
-    DEPS: lock
-  - PHP_VERSION: 7.0
-    DEPS: low
-  - PHP_VERSION: 7.0
-    DEPS: high
-  - PHP_VERSION: 7.1
-    DEPS: lock
-  - PHP_VERSION: 7.1
-    DEPS: low
   - PHP_VERSION: 7.1
     DEPS: high
 

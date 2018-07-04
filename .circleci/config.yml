@@ -12,4 +12,4 @@ jobs:
 
       # node cache
       # - run: cd web/app/themes/spinx && npm install webpack --save-dev
-      - run: cd web/app/themes/spinx && /root/.yarn/bin/yarn build:production
+      - run: cd web/app/themes/spinx && yarn build:production

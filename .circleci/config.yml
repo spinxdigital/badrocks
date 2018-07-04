@@ -11,27 +11,27 @@ jobs:
       - checkout
 
       # Download and cache dependencies
-      - run: composer install -n --prefer-dist
+      #- run: composer install -n --prefer-dist
         
       # run composer for theme
-      - run: cd web/app/themes/spinx && composer install -n --prefer-dist
+      #- run: cd web/app/themes/spinx && composer install -n --prefer-dist
 
       # node cache
       #- run: cd web/app/themes/spinx && npm install webpack --save-dev
 
       - restore_cache:
-        keys:
-          # when lock file changes, use increasingly general patterns to restore cache
-          - yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
-          - yarn-packages-v1-{{ .Branch }}-
-          - yarn-packages-v1-
+          keys:
+            # when lock file changes, use increasingly general patterns to restore cache
+            - yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
+            - yarn-packages-v1-{{ .Branch }}-
+            - yarn-packages-v1-
 
       - run: cd web/app/themes/spinx && yarn
 
       - save_cache:
-        paths:
-          - ~/.cache/yarn
-        key: yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+          key: yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
 
       - run: cd web/app/themes/spinx && yarn build:production
 

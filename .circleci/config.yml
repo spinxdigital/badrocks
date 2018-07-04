@@ -26,4 +26,5 @@ jobs:
       - run: cd web/app/themes/spinx && composer install -n --prefer-dist
 
       # node cache
+      - run: npm i webpack -g
       - run: cd web/app/themes/spinx && yarn build:production

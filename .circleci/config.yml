@@ -26,5 +26,5 @@ jobs:
       - run: cd web/app/themes/spinx && composer install -n --prefer-dist
 
       # node cache
-      - run: sudo npm i webpack -g
+      - run: sudo npm i webpack-cli -g
       - run: cd web/app/themes/spinx && yarn build:production

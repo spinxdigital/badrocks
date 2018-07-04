@@ -29,10 +29,12 @@ jobs:
 
       - save_cache:
           paths:
-            - ~/web/app/themes/spinx/node_modules
+            - ~/.cache/yarn
           key: yarn-packages-v1-{{ .Branch }}-{{ checksum "web/app/themes/spinx/yarn.lock" }}
 
       - run: cd web/app/themes/spinx && yarn build:production
+
+      - run: ls -al ~/.cache/yarn
 
       #artifacts
       - run: mkdir /tmp/artifacts

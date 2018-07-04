@@ -3,14 +3,11 @@
 # Check https://circleci.com/docs/2.0/language-php/ for more details
 #
 version: 2
-dependencies:
-  override:
-    - yarn
 jobs:
   build:
     docker:
-      # specify the version you desire here
-      - image: circleci/php:latest
+      # Specify the version you desire here
+      - image: circleci/php:7.1-jessie-node-browsers
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -25,19 +22,30 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
+          # "composer.lock" can be used if it is committed to the repo
           - v1-dependencies-{{ checksum "composer.json" }}
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
+      - run: composer install -n --prefer-dist
+
       - save_cache:
+          key: composer-v1-{{ checksum "composer.lock" }}
           paths:
-            - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
+            - vendor
         
-      # run composer
-      - run: composer update
+      # run composer for theme
       - run: cd web/app/themes/
-      - run: composer update
-      - run: curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-      - run: sudo apt-get update && sudo apt-get install yarn
-      - run: yarn -v
+      - run: composer install -n --prefer-dist
+
+      # node cache
+      - restore_cache:
+          keys:
+            - node-v3-{{ checksum "package.json" }}
+            - node-v3-
+      - run: yarn install
+      - save_cache:
+          key: node-v3-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+            - ~/.yarn

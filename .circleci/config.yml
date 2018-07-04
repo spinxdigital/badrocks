@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # Specify the version you desire here
-      - image: marphy/uc-php7-node-composer
+      - image: marphy/uc-php7-node-composer:latest
 
     working_directory: ~/repo
 

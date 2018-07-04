@@ -11,5 +11,5 @@ jobs:
       - checkout
 
       # node cache
-      - run: cd web/app/themes/spinx && npm install webpack
+      - run: cd web/app/themes/spinx && npm install webpack --save-dev
       - run: cd web/app/themes/spinx && yarn build:production

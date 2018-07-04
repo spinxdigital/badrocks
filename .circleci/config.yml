@@ -12,11 +12,4 @@ jobs:
 
       # node cache
       # - run: cd web/app/themes/spinx && npm install webpack --save-dev
-      - run: cd web/app/themes/spinx && yarn build:production
-
-      #artifacts
-      - run: mkdir /tmp/artifacts
-      - run: zip -r /tmp/artifacts/art.zip .
-
-      - store_artifacts:
-          path: /tmp/artifacts
+      - run: cd web/app/themes/spinx && /root/.yarn/bin/yarn build:production

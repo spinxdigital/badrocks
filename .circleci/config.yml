@@ -34,8 +34,6 @@ jobs:
 
       - run: cd web/app/themes/spinx && yarn build:production
 
-      - run: ls -al ~/.cache/yarn
-
       #artifacts
       - run: mkdir /tmp/artifacts
       #- run: sudo apt-get install p7zip-full

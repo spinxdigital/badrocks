@@ -5,6 +5,8 @@ cache:
     - '%LOCALAPPDATA%\Composer\files'
     - '%APPDATA%\npm-cache'
     - c:\composer\composer.phar
+    - node_modules
+    - '%LOCALAPPDATA%\Yarn'
 
 init:
   - cmd: >-
@@ -92,6 +94,6 @@ install:
 
 build_script:
   - cmd: >-
-      7z a -tzip badrocks.$($env:APPVEYOR_BUILD_VERSION).zip c:\project\badrocks
+      7z a -tzip badrocks.%APPVEYOR_BUILD_VERSION%.zip c:\project\badrocks
       
-      appveyor PushArtifact spinx-docs.$($env:APPVEYOR_BUILD_VERSION).zip
+      appveyor PushArtifact spinx-docs.%APPVEYOR_BUILD_VERSION%.zip

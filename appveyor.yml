@@ -99,3 +99,15 @@ build_script:
       7z a -tzip badrocks.%APPVEYOR_BUILD_VERSION%.zip c:\project\badrocks\*
       
       appveyor PushArtifact badrocks.%APPVEYOR_BUILD_VERSION%.zip
+
+test: off
+
+deploy:
+  - provider: Octopus
+    push_packages: true
+    create_release: true
+    deploy_release: true
+    server: http://octopus.spinxweb.net
+    api_key:
+    secure: cWWozXZ5+IZT9gyTN2KzR3zii0aZKDxZjDOXbOk9gyx1zm0JtXXKm/W631wstEcs
+    environment: Dev

@@ -109,5 +109,5 @@ deploy:
     deploy_release: true
     server: http://octopus.spinxweb.net
     api_key:
-    secure: cWWozXZ5+IZT9gyTN2KzR3zii0aZKDxZjDOXbOk9gyx1zm0JtXXKm/W631wstEcs
+      secure: sUHsWv7x42+F8dG501UZrf5RPOZaNnENs1rYmDm4hUU=
     environment: Dev

@@ -3,9 +3,7 @@ clone_folder: c:\project\badrocks
 
 cache:
     - '%LOCALAPPDATA%\Composer\files'
-    - '%APPDATA%\npm-cache'
     - c:\composer\composer.phar
-    - node_modules
     - '%LOCALAPPDATA%\Yarn'
 
 init:
@@ -96,6 +94,6 @@ build_script:
   - cmd: >-
       mkdir c:\artifacts && cd c:\artifacts
 
-      7z a -tzip badrocks.%APPVEYOR_BUILD_VERSION%.zip c:\project\badrocks
+      7z a -tzip badrocks.%APPVEYOR_BUILD_VERSION%.zip c:\project\badrocks\*
       
       appveyor PushArtifact badrocks.%APPVEYOR_BUILD_VERSION%.zip

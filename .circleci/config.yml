@@ -35,7 +35,7 @@ jobs:
       - run: mkdir /tmp/artifacts
       #- run: sudo apt-get install p7zip-full
       #- run: 7z a -tzip /tmp/badrock.$CIRCLE_BUILD_NUM.zip .
-      - run: zip -r /tmp/artifacts/badrock.$CIRCLE_BUILD_NUM.zip .
+      - run: zip -r /tmp/artifacts/badrock.1.0.$CIRCLE_BUILD_NUM.zip .
 
       - store_artifacts:
           path: /tmp/artifacts
